@@ -1,0 +1,20 @@
+from __gin__ import dynamic_registration
+# include "t5x/configs/reproduce_pwn/12-30_actual_t5/finetune/t5_small_small_AND_finetune.gin"
+# include "t5x/examples/t5/t5/small_small.gin"
+
+import flax.optim as optim
+import multioptimizer
+
+
+multioptimizer.MultiOptimizer:
+  traversals_and_optimizers = ((@optim.ModelParamTraversal(),
+                                %optimizer),)
+
+OPTIMIZER = @multioptimizer.MultiOptimizer()
+
+optim.ModelParamTraversal:
+  filter_fn = @multioptimizer.match_any()
+# Our MultiOptimzier will match any parameter with a flattened name that
+# matches any of these regular expressions.
+PROMPT_REGEX = ["^((?!embed).)*$"]
+multioptimizer.match_any.regexes = %PROMPT_REGEX

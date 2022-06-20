@@ -1,0 +1,2 @@
+bash final_exps/language_tasks/mtop/runs/1final_init_exps/LIME/mlp_across_layer_grouping___init_scale.sh $1
+bash final_exps/language_tasks/mtop/runs/1final_init_exps/LIME/premlpln_across_layer_grouping___init_scale.sh $1

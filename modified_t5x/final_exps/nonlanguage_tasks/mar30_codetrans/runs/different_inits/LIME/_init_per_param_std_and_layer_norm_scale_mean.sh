@@ -1,0 +1,74 @@
+#!/bin/bash
+
+MTN=code_trans_java_to_cs
+
+CKPT=$1
+EXP=$2
+VM=$3
+IDK=$4
+
+# LEARNING_RATE=0.001 
+LEARNING_RATE=0.003
+TRAIN_STEPS=150000
+PERIOD=25000
+EVAL_PERIOD=25000
+INPUT_LEN=1024
+TARGET_LEN=1024
+METRIC=em
+EVALUATOR_NUM_EXAMPLES=1000
+
+exp_logdir=/mnt/disks/persist/t5_training_models/${EXP}
+
+if [ "$IDK" = "echo_exp_logdir" ]
+then
+echo $exp_logdir
+fi
+
+if [ "$IDK" = "remove_exp_logdir" ]
+then
+echo remove_exp_logdir
+rm -rf $exp_logdir
+exit 1
+fi
+
+if [ "$IDK" = "scp_results_no_preds" ]
+then
+echo $IDK
+bash bash_utils/copy_finetune_no_predictions.sh $EXP quantum2x2-$VM $MTN
+exit 1
+fi
+
+if [ "$IDK" = "max_valid_acc_metric" ]
+then
+python extract_results/max_valid_acc_metric.py $exp_logdir $METRIC a
+exit 1
+fi
+
+python ./t5x/train.py \
+--gin_file=t5x/configs/final_exps/t5/finetune/small.gin \
+--gin.TRAIN_STEPS=$TRAIN_STEPS \
+--gin.INITIAL_CHECKPOINT_PATH=None \
+--gin.RESTORE=None \
+--gin.MIXTURE_OR_TASK_NAME="'${MTN}'" \
+--gin.TASK_FEATURE_LENGTHS="{'inputs': $INPUT_LEN, 'targets': $TARGET_LEN}" \
+--gin.BATCH_SIZE=32 \
+--gin.PERIOD=$PERIOD \
+--gin.EVAL_PERIOD=$EVAL_PERIOD \
+--gin.LEARNING_RATE=$LEARNING_RATE \
+--gin.PACK=False \
+--gin.DROPOUT_RATE=0.1 \
+--gin.FACTORS="'constant'" \
+--gin.optimizer="@adafactor.Adafactor()" \
+--gin.BEAM_SIZE=4 \
+--gin.MAX_DECODE_LENGTH=$TARGET_LEN \
+--gin.MODEL_DIR="'$exp_logdir'" \
+--gin.t5_small_t5x_checkpoint_path="'$CKPT'" \
+--gin.is_init_per_param_std_and_layer_norm_scale_mean=True \
+--gin.EVALUATOR_NUM_EXAMPLES=$EVALUATOR_NUM_EXAMPLES \
+--gin.shuffle_infer_eval=True \
+--gin.JSON_WRITE_N_RESULTS=3
+
+echo /mnt/disks/persist/t5_training_models/${EXP}
+
+# is_init_param_std_across_layers_and_layer_norm_scale_mean_across_layers=%is_init_param_std_across_layers_and_layer_norm_scale_mean_across_layers
+  # is_init_per_param_std_and_layer_norm_scale_mean=%is_init_per_param_std_and_layer_norm_scale_mean

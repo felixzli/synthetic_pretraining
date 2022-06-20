@@ -1,0 +1,11 @@
+include "t5x/configs/synthetic_tasks/1-22/finetune/t5_base_AND_finetune.gin"
+
+from __gin__ import dynamic_registration
+from t5x.examples.t5 import network
+
+is_init_with_relpos_mean_std=True
+is_init_with_token_mean_std=False
+is_init_with_per_QKVO_mean_std=True
+
+is_init_with_per_mlp_mean_std=False
+is_init_with_per_layer_norm_mean_std=False

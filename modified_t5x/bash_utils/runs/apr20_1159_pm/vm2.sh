@@ -1,0 +1,1 @@
+bash final_exps/nonlanguage_tasks/isarstep/runs/best_lr_main_table/from_scratch.sh $1

@@ -1,0 +1,11 @@
+*.npz
+logits.txt
+inputs_dic.txt
+**/*.npz
+**/*.png
+**/*.txt
+*.txt
+*.png
+**.csv
+**/*.csv
+!requirements.txt

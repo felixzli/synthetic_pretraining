@@ -1,0 +1,120 @@
+include "t5x/examples/t5/t5/12.gin"
+include "t5x/configs/final_exps/_pretrain.gin"
+
+from __gin__ import dynamic_registration
+
+# Register necessary SeqIO Tasks/Mixtures. 
+import t5.data.mixtures
+from t5x import adafactor
+#  
+from t5x import utils 
+from t5x.examples.t5 import network
+
+
+# @adafactor.Adafactor() or @adam.Adam()
+optimizer = %gin.REQUIRED
+OPTIMIZER = %optimizer
+
+PARAMETER_SCALE = True
+ADAFACTOR_WEIGHT_DECAY_RATE = None
+adafactor.Adafactor:
+  beta1 = None
+  clipping_threshold = 1.0
+  epsilon1 = 1e-30
+  epsilon2 = 0.001
+  factored = True
+  min_dim_size_to_factor = 128
+  multiply_by_parameter_scale = True
+  # step_offset = 0
+  # logical_factor_rules = @adafactor.standard_logical_factor_rules()
+  # multiply_by_parameter_scale = %PARAMETER_SCALE
+  # weight_decay_rate = %ADAFACTOR_WEIGHT_DECAY_RATE
+  # decay_rate = 0.0
+  # factored = False
+
+
+
+is_init_with_statistics = False
+is_sanity_check_load_weights=False
+is_load_embed = False
+is_load_everything_but_embed=False
+
+t5_small_t5x_checkpoint_path = 'asdfadsfsa'
+
+is_sanity_check_load_weights=False
+is_load_embed = False
+is_load_everything_but_embed=False
+
+t5_small_t5x_checkpoint_path = 'asdfadsfsa'
+
+
+
+is_init_with_statistics = False
+is_only_load_relpos_embed = False
+is_only_load_relpos_embed_with_statistics = False
+
+is_load_all_except_relpos=False
+is_load_with_all_stats=False
+is_load_with_layer_stats=False
+
+is_init_with_per_layer_attention_std=False
+is_init_with_relpos_mean_std=False
+is_init_with_token_mean_std=False
+is_init_with_per_layer_attention_mean_std=False
+is_init_with_per_QKVO_mean_std=False
+
+
+is_init_with_per_mlp_mean_std=False
+is_init_with_per_layer_norm_mean_std=False
+
+is_init_with_per_layer_norm_std=False
+is_init_with_per_QKVO_std=False
+is_init_with_relpos_std=False
+
+which_mar4_params_to_init_mean_std=None
+which_mar7_params_to_init_std=None
+which_params_to_init_mean=None
+init_with_custom_std=None
+init_with_custom_value=None
+
+
+is_load_second_everything_but_embed=False
+second_t5_small_t5x_checkpoint_path='askjdnaskjndkjasndkjsand'
+
+
+is_init_param_std_across_layers_and_layer_norm_scale_mean_across_layers=False
+is_init_per_param_std_and_layer_norm_scale_mean=False
+
+
+network.T5Config:
+  is_load_embed = %is_load_embed
+  t5_small_t5x_checkpoint_path = %t5_small_t5x_checkpoint_path
+  is_sanity_check_load_weights=%is_sanity_check_load_weights
+  is_load_everything_but_embed=%is_load_everything_but_embed
+  is_load_second_everything_but_embed=%is_load_second_everything_but_embed
+  second_t5_small_t5x_checkpoint_path=%second_t5_small_t5x_checkpoint_path
+  is_init_with_statistics = %is_init_with_statistics
+  is_only_load_relpos_embed = %is_only_load_relpos_embed
+  is_only_load_relpos_embed_with_statistics = %is_only_load_relpos_embed_with_statistics
+  is_load_all_except_relpos=%is_load_all_except_relpos
+  is_load_with_all_stats=%is_load_with_all_stats
+  is_load_with_layer_stats=%is_load_with_layer_stats
+  is_init_with_per_layer_attention_std=%is_init_with_per_layer_attention_std
+  is_init_with_relpos_mean_std=%is_init_with_relpos_mean_std
+  is_init_with_token_mean_std=%is_init_with_token_mean_std
+  is_init_with_per_layer_attention_mean_std=%is_init_with_per_layer_attention_mean_std
+  is_init_with_per_QKVO_mean_std=%is_init_with_per_QKVO_mean_std
+  is_init_with_per_mlp_mean_std=%is_init_with_per_mlp_mean_std
+  is_init_with_per_layer_norm_mean_std=%is_init_with_per_layer_norm_mean_std
+  
+  is_init_with_per_layer_norm_std=%is_init_with_per_layer_norm_std
+  is_init_with_per_QKVO_std=%is_init_with_per_QKVO_std
+  is_init_with_relpos_std=%is_init_with_relpos_std
+  which_mar4_params_to_init_mean_std=%which_mar4_params_to_init_mean_std
+  which_mar7_params_to_init_std=%which_mar7_params_to_init_std
+  which_params_to_init_mean=%which_params_to_init_mean
+  init_with_custom_std=%init_with_custom_std
+  init_with_custom_value=%init_with_custom_value
+
+  is_init_param_std_across_layers_and_layer_norm_scale_mean_across_layers=%is_init_param_std_across_layers_and_layer_norm_scale_mean_across_layers
+  is_init_per_param_std_and_layer_norm_scale_mean=%is_init_per_param_std_and_layer_norm_scale_mean

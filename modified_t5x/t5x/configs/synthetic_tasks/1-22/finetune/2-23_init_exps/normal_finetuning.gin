@@ -1,0 +1,6 @@
+include "t5x/configs/synthetic_tasks/1-22/finetune/t5_base_AND_finetune.gin"
+
+from __gin__ import dynamic_registration
+from t5x.examples.t5 import network
+
+is_sanity_check_load_weights=True

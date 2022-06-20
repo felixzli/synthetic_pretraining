@@ -1,0 +1,4 @@
+bash data_scripts/std_exps_1M_copy_run1/cp_data_to_fttttt.sh
+bash data_scripts/std_exps_1M_copy_run2/cp_data_to_fttttt.sh
+bash data_scripts/std_exps_1M_copy_run3/cp_data_to_fttttt.sh
+bash data_scripts/std_exps_1M_copy_run4/cp_data_to_fttttt.sh

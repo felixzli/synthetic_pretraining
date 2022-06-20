@@ -1,0 +1,5 @@
+*json
+**/*json
+/tmp/
+*/tmp/
+**/tmp/

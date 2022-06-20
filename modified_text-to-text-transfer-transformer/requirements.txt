@@ -1,0 +1,19 @@
+absl-py
+babel
+editdistance
+gin-config
+mesh-tensorflow[transformer]>=0.1.13
+nltk
+numpy
+pandas
+rouge-score
+sacrebleu
+scikit-learn
+scipy
+sentencepiece
+seqio-nightly
+six>=1.14  # TODO(adarob): Remove once rouge-score is updated.
+tensorflow-text
+tfds-nightly
+torch
+transformers>=2.7.0

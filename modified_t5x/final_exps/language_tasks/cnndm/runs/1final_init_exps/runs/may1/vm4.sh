@@ -1,0 +1,2 @@
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/LIME_include_nonlayer_params/per_param_grouping_exclude_preattnln___init_scale.sh $1
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/LIME_include_nonlayer_params/across_layer_grouping___init_scale.sh $1

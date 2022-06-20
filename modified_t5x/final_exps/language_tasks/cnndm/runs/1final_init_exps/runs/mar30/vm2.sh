@@ -1,0 +1,2 @@
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/LIME/per_param_grouping___init_mean_std.sh $1
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/LIME/layer_params_per_param_grouping___init_scale.sh $1

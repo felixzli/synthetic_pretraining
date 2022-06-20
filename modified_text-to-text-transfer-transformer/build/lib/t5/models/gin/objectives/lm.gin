@@ -1,0 +1,14 @@
+# -*-Python-*-
+
+# language model - no inputs - targets formed by first concatenating
+#  tokenized documents and then chopping them into chunks of %sequence_length
+#  tokens.
+
+
+preprocessors.unsupervised.preprocessors = [
+@preprocessors.select_random_chunk,
+@preprocessors.reduce_concat_tokens,
+@preprocessors.split_tokens_to_targets_length,
+]
+
+preprocessors.select_random_chunk.max_length = 65536

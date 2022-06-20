@@ -1,0 +1,3 @@
+bash data_scripts/copy_ablations/copy_ablate_length/28.sh
+bash data_scripts/copy_ablations/copy_ablate_length/252.sh
+bash data_scripts/copy_ablations/copy_ablate_length/1020.sh

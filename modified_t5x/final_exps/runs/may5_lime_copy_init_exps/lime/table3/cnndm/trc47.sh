@@ -1,0 +1,4 @@
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/LIME/init_table_3/mlp_per_param_grouping___init_scale.sh $1
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/LIME/init_table_3/preattnln_per_param_grouping___init_scale.sh $1
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/LIME/init_table_3/premlpln_per_param_grouping___init_scale.sh $1
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/LIME/init_table_3/qkvo_per_param_grouping___init_scale.sh $1

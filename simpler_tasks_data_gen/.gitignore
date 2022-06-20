@@ -1,0 +1,7 @@
+*/data/*
+/data/*
+/flax_data/*
+!data_scripts
+!**11-29_data**
+
+cfg_tasks/generated_cfg_task_data

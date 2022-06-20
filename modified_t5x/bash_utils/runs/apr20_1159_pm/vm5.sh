@@ -1,0 +1,1 @@
+bash final_exps/nonlanguage_tasks/isarstep/runs/different_inits/LIME/init_per_param_std_and_layer_norm_scale_mean.sh $1

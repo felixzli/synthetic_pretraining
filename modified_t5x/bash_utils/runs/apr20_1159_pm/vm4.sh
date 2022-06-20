@@ -1,0 +1,1 @@
+bash final_exps/nonlanguage_tasks/isarstep/runs/different_inits/LIME/init_per_param_mean_std $1

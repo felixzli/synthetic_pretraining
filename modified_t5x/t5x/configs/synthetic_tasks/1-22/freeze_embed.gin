@@ -1,0 +1,17 @@
+from __gin__ import dynamic_registration
+import flax.optim as optim
+import multioptimizer
+
+
+multioptimizer.MultiOptimizer:
+  traversals_and_optimizers = ((@optim.ModelParamTraversal(),
+                                %optimizer),)
+
+OPTIMIZER = @multioptimizer.MultiOptimizer()
+
+optim.ModelParamTraversal:
+  filter_fn = @multioptimizer.match_any()
+# Our MultiOptimzier will match any parameter with a flattened name that
+# matches any of these regular expressions.
+PROMPT_REGEX = ["^((?!embed).)*$"]
+multioptimizer.match_any.regexes = %PROMPT_REGEX

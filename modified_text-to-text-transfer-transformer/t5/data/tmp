@@ -1,0 +1,42 @@
+
+lime_abduct_split = {
+    "train": "/mnt/disks/persist/felix-text-to-text-transfer-transformer/synthetic_tasks_data/1M_1_23_lime/lime_abduct/train100000_deduped_lime_abduct0_220_0M.txt",
+    "validation": "/mnt/disks/persist/felix-text-to-text-transfer-transformer/synthetic_tasks_data/1M_1_23_lime/lime_abduct/valid10000_deduped_lime_abduct0_220_0M.txt"}
+
+lime_deduct_split = {
+    "train": "/mnt/disks/persist/felix-text-to-text-transfer-transformer/synthetic_tasks_data/1M_1_23_lime/lime_deduct/train100000_deduped_lime_deduct0_220_0M.txt",
+    "validation": "/mnt/disks/persist/felix-text-to-text-transfer-transformer/synthetic_tasks_data/1M_1_23_lime/lime_deduct/valid10000_deduped_lime_deduct0_220_0M.txt"}
+
+lime_induct_split = {
+    "train": "/mnt/disks/persist/felix-text-to-text-transfer-transformer/synthetic_tasks_data/1M_1_23_lime/lime_induct/train100000_deduped_lime_induct0_220_0M.txt",
+    "validation": "/mnt/disks/persist/felix-text-to-text-transfer-transformer/synthetic_tasks_data/1M_1_23_lime/lime_induct/valid10000_deduped_lime_induct0_220_0M.txt"}
+
+
+seqio.TaskRegistry.add(
+    "induct_1M_1_23_lime",
+    source=seqio.TextLineDataSource(lime_induct_split),
+    output_features=output_features("t5"),
+    preprocessors=lime_processors(),
+    metric_fns=[])
+
+
+seqio.TaskRegistry.add(
+    "deduct_1M_1_23_lime",
+    source=seqio.TextLineDataSource(lime_deduct_split),
+    output_features=output_features("t5"),
+    preprocessors=lime_processors(),
+    metric_fns=[])
+
+
+seqio.TaskRegistry.add(
+    "abduct_1M_1_23_lime",
+    source=seqio.TextLineDataSource(lime_abduct_split),
+    output_features=output_features("t5"),
+    preprocessors=lime_processors(),
+    metric_fns=[])
+
+
+seqio.MixtureRegistry.add(
+  '1M_1_23_lime',
+  ['abduct_1M_1_23_lime', 'deduct_1M_1_23_lime', 'induct_1M_1_23_lime'], default_rate=1
+)

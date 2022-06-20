@@ -1,0 +1,4 @@
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/set/per_param_grouping___init_mean_std.sh $1
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/copy/per_param_grouping___init_mean_std.sh $1
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/default_t5_task_params_nesting_dependency_language/per_param_grouping___init_mean_std.sh $1
+bash final_exps/language_tasks/cnndm/runs/1final_init_exps/nonsense_summary_10k/per_param_grouping___init_mean_std.sh $1
