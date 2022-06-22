@@ -1,7 +1,7 @@
 
 # Overview
 This repo contains scripts to reproduce experiments in the paper: 
-[Insights into Pre-training via Simpler Synthetic Tasks](https://arxiv.org/abs/0000000000)
+[Insights into Pre-training via Simpler Synthetic Tasks](https://arxiv.org/abs/2206.10139)
 
 
 # Setup
