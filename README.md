@@ -8,7 +8,7 @@ This repo contains scripts to reproduce experiments in the paper:
 Use a Google Cloud v3 or v4 TPU VM.
 Run the below commands:
 ```
-cd ./modified_text-to-text-transfer-transformer
+cd ./modified_t5x
 python3 -m pip install -e '.[tpu]' -f \
   https://storage.googleapis.com/jax-releases/libtpu_releases.html
 cd ..
